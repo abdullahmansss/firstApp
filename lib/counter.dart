@@ -8,14 +8,27 @@ class Counter extends StatefulWidget
 
 class _CounterState extends State<Counter>
 {
-  int i = 0;
-  TextEditingController textEditingController;
+  var result = 0;
+
+  void change(int i)
+  {
+    switch(i)
+    {
+      case 2:
+        result = result + 2;
+        break;
+      case 4:
+        result = result + 4;
+        break;
+      case 6:
+        result = result + 6;
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context)
   {
-    textEditingController = TextEditingController()..text = 'name';
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -29,53 +42,64 @@ class _CounterState extends State<Counter>
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              FloatingActionButton(
+              FlatButton(
+                color: Colors.red,
                 onPressed: () {
-                  setState(()
-                  {
-                    if(i != 0)
-                    {
-                      i--;
-                    }
+                  setState(() {
+                    change(2);
                   });
                 },
-                backgroundColor: Colors.teal,
-                child: Icon(
-                  Icons.remove,
+                child: Text(
+                  '+2',
+                  style: TextStyle(
+                    fontSize: 30.0,
+                  ),
                 ),
               ),
               SizedBox(
                 width: 20.0,
               ),
-              Text(
-                '$i',
-                style: TextStyle(
-                  fontSize: 30.0,
-                ),
-              ),
-              SizedBox(
-                width: 20.0,
-              ),
-              FloatingActionButton(
-                onPressed: ()
-                {
-                  if(i != 10)
-                  {
-                    setState(()
-                    {
-                      i++;
-                    });
-                  }
+              FlatButton(
+                color: Colors.red,
+                onPressed: () {
+                  setState(() {
+                    change(4);
+                  });
                 },
-                backgroundColor: Colors.teal,
-                child: Icon(
-                  Icons.add,
+                child: Text(
+                  '+4',
+                  style: TextStyle(
+                    fontSize: 30.0,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 20.0,
+              ),
+              FlatButton(
+                color: Colors.red,
+                onPressed: () {
+                  setState(() {
+                    change(6);
+                  });
+                },
+                child: Text(
+                  '+6',
+                  style: TextStyle(
+                    fontSize: 30.0,
+                  ),
                 ),
               ),
             ],
           ),
-          TextField(
-            controller: textEditingController,
+          SizedBox(
+            height: 20.0,
+          ),
+          Text(
+            result.toString(),
+            style: TextStyle(
+              fontSize: 30.0,
+            ),
           ),
         ],
       ),
