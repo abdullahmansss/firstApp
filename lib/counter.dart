@@ -1,3 +1,5 @@
+import 'package:first_flutter/currency.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Counter extends StatefulWidget
@@ -8,97 +10,187 @@ class Counter extends StatefulWidget
 
 class _CounterState extends State<Counter>
 {
-  var result = 0;
-
-  void change(int i)
-  {
-    switch(i)
-    {
-      case 2:
-        result = result + 2;
-        break;
-      case 4:
-        result = result + 4;
-        break;
-      case 6:
-        result = result + 6;
-        break;
-    }
-  }
-
   @override
   Widget build(BuildContext context)
   {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Counter App'
+          'Converter App'
         ),
         backgroundColor: Colors.teal,
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              FlatButton(
-                color: Colors.red,
-                onPressed: () {
-                  setState(() {
-                    change(2);
-                  });
-                },
-                child: Text(
-                  '+2',
-                  style: TextStyle(
-                    fontSize: 30.0,
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: GestureDetector(
+                      onTap: ()
+                      {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (ctx)
+                          {
+                            return Currency('currency');
+                          },
+                        ));
+                      },
+                      child: Container(
+                        child: Column(
+                          children: <Widget>[
+                            Expanded(
+                              child: Container(
+                                child: Image(
+                                  image: NetworkImage('https://zadcall.com/wp-content/uploads/2020/07/img_1_ar-2.png'),
+                                ),
+                                width: double.infinity,
+                                color: Colors.red,
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                'Currency',
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              padding: EdgeInsets.symmetric(vertical: 10.0),
+                              width: double.infinity,
+                              alignment: Alignment.center,
+                              color: Colors.teal,
+                            ),
+                          ],
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                width: 20.0,
-              ),
-              FlatButton(
-                color: Colors.red,
-                onPressed: () {
-                  setState(() {
-                    change(4);
-                  });
-                },
-                child: Text(
-                  '+4',
-                  style: TextStyle(
-                    fontSize: 30.0,
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Container(
+                      child: Column(
+                        children: <Widget>[
+                          Expanded(
+                            child: Container(
+                              child: Image(
+                                image: NetworkImage('https://zadcall.com/wp-content/uploads/2020/07/img_1_ar-2.png'),
+                              ),
+                              width: double.infinity,
+                              color: Colors.red,
+                            ),
+                          ),
+                          Container(
+                            child: Text(
+                              'Currency',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                color: Colors.white,
+                              ),
+                            ),
+                            padding: EdgeInsets.symmetric(vertical: 10.0),
+                            width: double.infinity,
+                            alignment: Alignment.center,
+                            color: Colors.teal,
+                          ),
+                        ],
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                width: 20.0,
-              ),
-              FlatButton(
-                color: Colors.red,
-                onPressed: () {
-                  setState(() {
-                    change(6);
-                  });
-                },
-                child: Text(
-                  '+6',
-                  style: TextStyle(
-                    fontSize: 30.0,
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
-          SizedBox(
-            height: 20.0,
-          ),
-          Text(
-            result.toString(),
-            style: TextStyle(
-              fontSize: 30.0,
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Container(
+                      child: Column(
+                        children: <Widget>[
+                          Expanded(
+                            child: Container(
+                              child: Image(
+                                image: NetworkImage('https://zadcall.com/wp-content/uploads/2020/07/img_1_ar-2.png'),
+                              ),
+                              width: double.infinity,
+                              color: Colors.red,
+                            ),
+                          ),
+                          Container(
+                            child: Text(
+                              'Currency',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                color: Colors.white,
+                              ),
+                            ),
+                            padding: EdgeInsets.symmetric(vertical: 10.0),
+                            width: double.infinity,
+                            alignment: Alignment.center,
+                            color: Colors.teal,
+                          ),
+                        ],
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Container(
+                      child: Column(
+                        children: <Widget>[
+                          Expanded(
+                            child: Container(
+                              child: Image(
+                                image: NetworkImage('https://zadcall.com/wp-content/uploads/2020/07/img_1_ar-2.png'),
+                              ),
+                              width: double.infinity,
+                              color: Colors.red,
+                            ),
+                          ),
+                          Container(
+                            child: Text(
+                              'Currency',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                color: Colors.white,
+                              ),
+                            ),
+                            padding: EdgeInsets.symmetric(vertical: 10.0),
+                            width: double.infinity,
+                            alignment: Alignment.center,
+                            color: Colors.teal,
+                          ),
+                        ],
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
