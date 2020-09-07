@@ -28,11 +28,9 @@ class _DataBaseState extends State<DataBase> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)
+  {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Database'),
-      ),
       body: ListView.separated(
         itemCount: list.length,
         itemBuilder: (ctx, index) => buildItem(list, index, context),
@@ -122,7 +120,7 @@ class _DataBaseState extends State<DataBase> {
                   }
                 },
                 child: Text(
-                  list != null ? 'Update User' : 'Add User',
+                  list != null  ? 'Update User' : 'Add User',
                   style: TextStyle(
                     color: Colors.white,
                   ),

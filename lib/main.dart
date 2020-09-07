@@ -1,4 +1,5 @@
 import 'package:first_flutter/database.dart';
+import 'package:first_flutter/home.dart';
 import 'package:first_flutter/in_body.dart';
 import 'package:first_flutter/list.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      home: DataBase(),
+      home: HomeScreen(),
     );
   }
 }
