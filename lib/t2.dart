@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:first_flutter/bloc/bloc.dart';
 import 'package:first_flutter/bloc/states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart' as http;
 
 class T2Screen extends StatelessWidget
 {
@@ -37,7 +40,8 @@ class T2Screen extends StatelessWidget
             ),
             FlatButton(
               onPressed:(){
-                T1Bloc.get(context).subtraction();
+                //T1Bloc.get(context).subtraction();
+                getPosts();
               },
               child: Text('sub'),
             ),
@@ -45,5 +49,15 @@ class T2Screen extends StatelessWidget
         );
       },
     );
+  }
+
+  void getPosts() async
+  {
+    var url = 'https://2code.info/demo/themes/Discy/Boxed/api/get_recent_posts/?post_type=question';
+    var response = await http.get(url);
+
+    Map mm = json.decode(response.body);
+
+    print('${mm['pages']}');
   }
 }
