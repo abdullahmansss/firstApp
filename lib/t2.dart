@@ -58,6 +58,6 @@ class T2Screen extends StatelessWidget
 
     Map mm = json.decode(response.body);
 
-    print('${mm['pages']}');
+    print('${mm['posts'][0]['title']}');
   }
 }
