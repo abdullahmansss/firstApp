@@ -14,7 +14,8 @@ class PostsDetailsModels {
   String date;
 }
 
-class PostsModel2 {
+class PostsModel2
+{
   Map response;
 
   int getCount() => response['count'];

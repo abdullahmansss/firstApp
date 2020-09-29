@@ -1,8 +1,10 @@
 import 'package:first_flutter/bloc/bloc.dart';
+import 'package:first_flutter/book_screen/book_screen.dart';
 import 'package:first_flutter/database.dart';
 import 'package:first_flutter/home.dart';
 import 'package:first_flutter/in_body.dart';
 import 'package:first_flutter/list.dart';
+import 'package:first_flutter/t2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,10 +24,7 @@ class MyApp extends StatelessWidget
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      home: BlocProvider<T1Bloc>(
-        create: (ctx) => T1Bloc(),
-        child: HomeScreen(),
-      ),
+      home: BookScreen(),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:first_flutter/bloc/bloc.dart';
 import 'package:first_flutter/bloc/states.dart';
+import 'package:first_flutter/models/books_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
@@ -53,11 +54,11 @@ class T2Screen extends StatelessWidget
 
   void getPosts() async
   {
-    var url = 'https://2code.info/demo/themes/Discy/Boxed/api/get_recent_posts/?post_type=question';
+    var url = 'https://www.googleapis.com/books/v1/volumes?q=cars';
     var response = await http.get(url);
 
     Map mm = json.decode(response.body);
 
-    print('${mm['posts'][0]['title']}');
+    mm['items'][0]['volumeInfo']['title'];
   }
 }
