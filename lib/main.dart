@@ -1,30 +1,37 @@
-import 'package:first_flutter/bloc/bloc.dart';
-import 'package:first_flutter/book_screen/book_screen.dart';
-import 'package:first_flutter/database.dart';
-import 'package:first_flutter/home.dart';
-import 'package:first_flutter/in_body.dart';
-import 'package:first_flutter/list.dart';
-import 'package:first_flutter/t2.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:first_flutter/modules/home/home.dart';
+import 'package:first_flutter/modules/register/register.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main()
+bool isUser = false;
+
+void main() async
 {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  if(FirebaseAuth.instance.currentUser != null)
+    isUser = true;
+
+  runApp(MyApp(isUser));
 }
 
 class MyApp extends StatelessWidget
 {
+  final bool isUser;
+
+  MyApp(this.isUser);
+
   @override
   Widget build(BuildContext context)
   {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      home: BookScreen(),
+      home: isUser ? HomeScreen() : RegisterScreen(),
     );
   }
 }
