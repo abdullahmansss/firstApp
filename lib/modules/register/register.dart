@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:first_flutter/modules/home/home.dart';
+import 'package:first_flutter/home.dart';
+import 'package:first_flutter/modules/profile/profile.dart';
 import 'package:first_flutter/modules/login/login.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toast/toast.dart';
 
 class RegisterScreen extends StatefulWidget
@@ -141,12 +143,17 @@ class _RegisterScreenState extends State<RegisterScreen>
   {
     CollectionReference users = FirebaseFirestore.instance.collection('users');
 
-    users.doc(email).set({
+    users.doc(uId).set({
       'user_name':username,
       'email':email,
-    }).then((value)
+      'image':'',
+    }).then((value) async
     {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('userID', uId).then((value)
+      {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      });
     }).catchError((e)
     {
       setState(()

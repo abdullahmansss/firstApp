@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Test extends StatelessWidget
 {
@@ -6,42 +7,20 @@ class Test extends StatelessWidget
   Widget build(BuildContext context)
   {
     return Scaffold(
-      body: Wrap(
-        alignment: WrapAlignment.end,
-        spacing: 10.0,
-        runSpacing: 20.0,
-        children: [
-          Container(
-            width: 100.0,
-            height: 100.0,
-            color: Colors.blue,
-          ),
-          Container(
-            width: 100.0,
-            height: 100.0,
-            color: Colors.blue,
-          ),
-          Container(
-            width: 100.0,
-            height: 100.0,
-            color: Colors.blue,
-          ),
-          Container(
-            width: 100.0,
-            height: 100.0,
-            color: Colors.blue,
-          ),
-          Container(
-            width: 100.0,
-            height: 100.0,
-            color: Colors.blue,
-          ),
-          Container(
-            width: 100.0,
-            height: 100.0,
-            color: Colors.blue,
-          ),
-        ],
+      body: FlatButton(
+        onPressed: () async
+        {
+          // url
+          if(await canLaunch('google.com'))
+            await launch('google.com');
+          // phone
+          if(await canLaunch('tel:+201115342559'))
+            await launch('tel:+201115342559');
+          // any app
+          if(await canLaunch('...'))
+            await launch('...');
+        },
+        child: null,
       ),
     );
   }

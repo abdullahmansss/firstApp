@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:first_flutter/modules/home/home.dart';
+import 'package:first_flutter/home.dart';
+import 'package:first_flutter/modules/profile/profile.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toast/toast.dart';
 
 class LoginScreen extends StatefulWidget
@@ -82,11 +84,15 @@ class _LoginScreenState extends State<LoginScreen>
     );
   }
 
-  void loginUser(email, password, context)
+  void loginUser(email, password, context) async
   {
-    FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password).then((value)
+    FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password).then((value) async
     {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('userID', value.user.uid).then((value)
+      {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      });
     }).catchError((e)
     {
       setState(()
